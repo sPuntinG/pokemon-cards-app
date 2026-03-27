@@ -1,0 +1,121 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f5f7;
+  color: #333;
+  margin: 0;
+  padding: 30px;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.pokemon-grid {
+  display: grid;
+  /* This creates a responsive grid that automatically wraps cards */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.pokemon-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.pokemon-id {
+  color: #888;
+  font-weight: bold;
+}
+
+.type-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: #888; /* Fallback */
+}
+
+/* A few specific type colors */
+.grass {
+  background-color: #78c850;
+}
+.fire {
+  background-color: #f08030;
+}
+.water {
+  background-color: #6890f0;
+}
+.electric {
+  background-color: #f8d030;
+  color: #333;
+}
+.psychic {
+  background-color: #f85888;
+}
+.normal {
+  background-color: #313131;
+}
+.ghost {
+  background-color: #705898;
+}
+.dragon {
+  background-color: #a8a878;
+}
+.fighting {
+  background-color: #c03028;
+}
+.rock {
+  background-color: #b2b1b0;
+}
+
+.pokemon-sprite {
+  width: 120px;
+  height: 120px;
+  image-rendering: pixelated; /* Keeps sprites crisp */
+}
+
+h2 {
+  margin: 0 0 0 0;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+h3 {
+  margin: 0 0 50px 0;
+  color: #555;
+  text-align: center;
+  font-style: normal;
+}
+
+.stats-container {
+  margin-top: 15px;
+}
