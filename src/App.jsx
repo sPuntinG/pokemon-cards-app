@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PokemonCard from "./PokemonCard";
 import "./App.css";
 
@@ -26,12 +26,38 @@ const pokemons = [
 ];
 
 function App() {
+  // 1. Create the state. Default is 'All' so we see everything initially.
+  const [selectedType, setSelectedType] = useState("All");
+
+  // 2. Automatically figure out all the unique types from our data
+  // Using a Set removes duplicates, so we only get one "Water", one "Fire", etc.
+  const uniqueTypes = ["All", ...new Set(pokemons.map((p) => p.type))];
+
+  // 3. Filter the original array based on what's currently selected
+  const filteredPokemons =
+    selectedType === "All"
+      ? pokemons
+      : pokemons.filter((pokemon) => pokemon.type === selectedType);
   return (
     <div className="app-container">
       <h1>What a Deck!</h1>
-      <h3>(read it with a kiwi accent)</h3>
+      <h3>(it's more fun if you read it with a kiwi accent)</h3>
+      {/* NEW: The Filter Buttons */}
+      <div className="filter-container">
+        {uniqueTypes.map((type) => (
+          <button
+            key={type}
+            // We use the same lowercase trick to apply your existing color classes!
+            className={`filter-btn ${type.toLowerCase()} ${selectedType === type ? "active" : ""}`}
+            onClick={() => setSelectedType(type)}
+          >
+            {type}
+          </button>
+        ))}
+      </div>
+
       <div className="pokemon-grid">
-        {pokemons.map((pokemon) => (
+        {filteredPokemons.map((pokemon) => (
           <PokemonCard key={pokemon.id} data={pokemon} />
         ))}
       </div>
